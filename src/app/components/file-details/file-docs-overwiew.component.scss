@@ -1,0 +1,31 @@
+.file-documents {
+  background-color: white;
+  border: 2px solid #d7d7d7;
+  border-radius: 3px;
+
+  .header {
+    background-color: #d7d7d7;
+    padding: 1px 12px 3px 12px;
+
+    display: flex;
+
+    /*.far {
+      padding-top: 3px;
+      margin-right: 5px;
+    }*/
+
+    h4 {
+      margin: 0;
+      font-size: 1.15em;
+    }
+  }
+
+  .doc-name {
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+
+  .document-wrapper {
+    min-height:  100px;
+  }
+}
