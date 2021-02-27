@@ -8,6 +8,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { AppViewComponent } from './components/app-view/app-view.component';
 import { FileDetailsComponent } from './components/file-details/file-details.component';
 import { FileDocsOverwiewComponent } from './components/file-details/file-docs-overwiew.component';
+import {FileUploadModule} from 'primeng/fileupload';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { FileDocsOverwiewComponent } from './components/file-details/file-docs-o
     HeaderComponent,
     AppViewComponent,
     FileDetailsComponent,
-    FileDocsOverwiewComponent
+    FileDocsOverwiewComponent,
+    UploadFileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent]
