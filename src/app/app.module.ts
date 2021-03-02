@@ -10,6 +10,7 @@ import { FileDetailsComponent } from './components/file-details/file-details.com
 import { FileDocsOverwiewComponent } from './components/file-details/file-docs-overwiew.component';
 import {FileUploadModule} from 'primeng/fileupload';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { VerificationInfoComponent } from './components/verification-info/verification-info.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     AppViewComponent,
     FileDetailsComponent,
     FileDocsOverwiewComponent,
-    UploadFileComponent
+    UploadFileComponent,
+    VerificationInfoComponent
   ],
   imports: [
     BrowserModule,

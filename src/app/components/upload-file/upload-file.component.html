@@ -1,11 +1,12 @@
-<div class="card">
-  <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)"
-                multiple="multiple" accept="image/*" maxFileSize="1000000" cancelLabel="Zrušiť"
+<div class="card ">
+  <p-fileUpload name="demo[]" (uploadHandler)="upload($event)"
+                customUpload="true"
+                accept="" maxFileSize="1000000" cancelLabel="Zrušiť"
                 uploadLabel="Odošli dokument" chooseLabel="Vyrať" >
-    <ng-template pTemplate="content" style="min-height: 400px">
-        <ul *ngIf="uploadedFiles.length">
-          <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
-        </ul>
+    <ng-template pTemplate="content" >
+        <!--<ul *ngIf="uploadedFiles.length">
+          <li class="hej" *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes {{uploadedFiles.length}}</li>
+        </ul>-->
     </ng-template>
   </p-fileUpload>
 

@@ -1,38 +1,20 @@
 <div class="file-documents">
 
   <div class="header">
-    <h4><i class="far fa-file-alt"></i> Test.asice</h4>
+    <h4 *ngIf="report?.containerName != null"><i class="far fa-file-alt"></i> {{report.containerName }}</h4>
   </div>
 
-  <div class="container document-wrapper">
-    <div class="row">
-      <div class="col-12 doc-name">
-        ExampleDoc.xml
+  <div class="container document-wrapper" [ngClass]=" {'d-flex align-items-center' : report?.originalDocuments == null } ">
+    <div *ngIf="report?.originalDocuments != null" class="">
+      <div class="row" *ngFor="let doc of report.originalDocuments">
+        <div class="col-12 doc-name">
+          {{doc.name}}
+        </div>
       </div>
     </div>
-    <div class="row" >
-      <div class="col-12 doc-name" >
-        <!--<i class="far fa-hand-point-right"></i> -->ExampldvsdfsdfsdfsdfsdfeDoc2.xml
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 doc-name">
-        ExampleDoc.xml
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 doc-name">
-        ExampleDoc.xml
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 doc-name">
-        ExampleDoc.xml
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 doc-name">
-         ExampleDoc.xml
+    <div *ngIf="report?.originalDocuments == null" class="w-100" >
+      <div class="row">
+        <div class="col-12 text-center" style="color: #d7d7d7">Nahrajte svoj dokument</div>
       </div>
     </div>
   </div>

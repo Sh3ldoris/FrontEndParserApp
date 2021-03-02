@@ -19,7 +19,7 @@
           Názov
         </div>
         <div class="col-8">
-          kontainer.asice
+          {{report?.containerName != null ? report.containerName : '?'}}
         </div>
       </div>
 
@@ -28,7 +28,7 @@
           Veľkosť
         </div>
         <div class="col-8">
-          192 kB
+          "hardcode" 192 kB
         </div>
       </div>
 
@@ -37,9 +37,10 @@
           Druh obsahu
         </div>
         <div class="col-8">
-          application/vnd.asi-e+zip
+          "hardcode" application/vnd.asi-e+zip
         </div>
       </div>
+
     </div>
   </div>
 </div>

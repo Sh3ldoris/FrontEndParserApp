@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ContainerService} from "../../shared-service/container.service";
+import {ContainerReport} from "../../interface/container-report";
 
 @Component({
   selector: 'app-file-details',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FileDetailsComponent implements OnInit {
 
-  constructor() { }
+  report: ContainerReport;
+
+  constructor(private reportService: ContainerService) { }
 
   ngOnInit(): void {
+    this.reportService.currentReport.subscribe(rep => {
+      this.report = rep;
+    });
   }
 
 }
