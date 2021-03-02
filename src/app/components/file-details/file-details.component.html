@@ -28,7 +28,7 @@
           Veľkosť
         </div>
         <div class="col-8">
-          "hardcode" 192 kB
+          {{size != null ? formatBytes(size) : '?'}}
         </div>
       </div>
 
@@ -37,7 +37,7 @@
           Druh obsahu
         </div>
         <div class="col-8">
-          "hardcode" application/vnd.asi-e+zip
+          {{fileType != null ? fileType : '?'}}
         </div>
       </div>
 

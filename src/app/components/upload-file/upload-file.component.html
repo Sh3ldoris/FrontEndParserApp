@@ -1,5 +1,5 @@
 <div class="card ">
-  <p-fileUpload name="demo[]" (uploadHandler)="upload($event)"
+  <p-fileUpload name="demo[]" (uploadHandler)="upload($event)" (onRemove)="onRemoveMethod($event)"
                 customUpload="true"
                 accept="" maxFileSize="1000000" cancelLabel="Zrušiť"
                 uploadLabel="Odošli dokument" chooseLabel="Vyrať" >

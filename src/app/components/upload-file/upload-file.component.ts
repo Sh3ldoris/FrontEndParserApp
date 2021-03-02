@@ -21,15 +21,16 @@ export class UploadFileComponent implements OnInit {
   }
 
   upload(event) {
-    const file = event.files[0];
+   const file = event.files[0];
     const reader = new FileReader();
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(event.files[0]);
 
     reader.onload = () => {
       const base = reader.result as string;
       this.uploadService.upload(new FileUploadRequest(base.split(',')[1], file.name))
         .subscribe( (data : ContainerReport) => {
-          this.reportService.changeContainer(data);
+          this.reportService.changeReport(data);
+          this.reportService.changeSelectedFile(file)
         });
     };
 
@@ -45,6 +46,10 @@ export class UploadFileComponent implements OnInit {
 
   onBasicUploadAuto(event) {
     console.log('hek');
+  }
+
+  onRemoveMethod(event) {
+    this.reportService.cleanReport();
   }
 
 }

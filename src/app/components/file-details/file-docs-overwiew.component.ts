@@ -17,6 +17,6 @@ export class FileDocsOverwiewComponent implements OnInit {
     this.reportService.currentReport.subscribe(rep => {
       this.report = rep;
     });
-  }
 
+  }
 }
