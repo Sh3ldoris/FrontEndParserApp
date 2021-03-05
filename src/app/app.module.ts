@@ -11,6 +11,10 @@ import { FileDocsOverwiewComponent } from './components/file-details/file-docs-o
 import {FileUploadModule} from 'primeng/fileupload';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { VerificationInfoComponent } from './components/verification-info/verification-info.component';
+import { SignatureDetailComponent } from './components/signature-detail/signature-detail.component';
+import {PanelModule} from 'primeng/panel';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TextAreaComponent } from './components/text-area/text-area.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +24,17 @@ import { VerificationInfoComponent } from './components/verification-info/verifi
     FileDetailsComponent,
     FileDocsOverwiewComponent,
     UploadFileComponent,
-    VerificationInfoComponent
+    VerificationInfoComponent,
+    SignatureDetailComponent,
+    TextAreaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FileUploadModule
+    FileUploadModule,
+    PanelModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

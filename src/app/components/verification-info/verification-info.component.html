@@ -1,23 +1,29 @@
 <div class="validation-info-wrapper pb-3">
-  <div class="heading-detail p-2">
+  <div class="heading-detail glossy p-2">
     <h2>Verifikácia dokumentu - informácie</h2>
   </div>
   <div *ngIf="report != null" class="container mt-2">
 
-    <div class="row ">
+    <div class="row px-0 px-sm-2">
       <div class="col-12 col-lg-6 border-left">
         <div class="row">
-          <div class="col-4">Počet podpisov</div>
-          <div class="col-8">{{report.signaturesCount}}</div>
+          <div class="col-6">Počet podpisov</div>
+          <div class="col-6">{{report.signaturesCount}}</div>
         </div>
         <div class="row">
-          <div class="col-4">Počet platných podpisov</div>
-          <div class="col-8">{{report.validSignaturesCount}}</div>
+          <div class="col-6">Počet platných podpisov</div>
+          <div class="col-6">{{report.validSignaturesCount}}</div>
         </div>
         <div class="row">
-          <div class="col-4">Čas overenia</div>
-          <div class="col-8">{{report.validationDate}}</div>
+          <div class="col-6">Čas overenia</div>
+          <div class="col-6">{{report.validationDate}}</div>
         </div>
+      </div>
+    </div>
+
+    <div class="row" *ngFor="let signature of report.signatures">
+      <div class="col-12">
+        <app-signature-detail [signature]="signature"></app-signature-detail>
       </div>
     </div>
 

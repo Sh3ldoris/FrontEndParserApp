@@ -1,0 +1,31 @@
+.header {
+  padding: 9px 20px;
+  font-weight: 400;
+  border-radius: 5px;
+  box-shadow: 0 0 4px rgb(0 0 0 / 15%), 0 2px 2px rgb(0 0 0 / 15%);
+  position: relative;
+
+  .right, .left {
+    padding: 20px !important;
+  }
+
+  .actions {
+    position: absolute;
+    top: 50%;
+    right: 24px;
+    transform: translateY(-50%);
+  }
+
+  h4 {
+    margin-bottom: 5px;
+    color: white;
+    font-weight: 400;
+    font-size: 1.12em;
+  }
+}
+
+.header:hover {
+
+  cursor: pointer;
+
+}

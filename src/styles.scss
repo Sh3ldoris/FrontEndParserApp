@@ -3,6 +3,20 @@ body {
   background-color: white;
 }
 
+.panel-no-header {
+  .p-panel-header {
+    display: none !important;
+  }
+}
+
+.glossy {
+  background-color: #AAA;
+  background-image: linear-gradient( /* chrome */
+      hsla(0, 0%, 50%, 0.6), hsla(0, 0%, 40%, 0) 20%,
+      hsla(0, 0%, 0%, 0.3) 30%, hsla(0, 0%, 60%, 0.2)
+  );
+}
+
 @media (min-width: 1200px) {
   .container{
     max-width: 1150px;

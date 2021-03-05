@@ -1,0 +1,47 @@
+<div class="container py-1 px-0">
+  <header class="header"  style="background-color: #cfb0b0" (click)="collapsed = !collapsed">
+    <div class="d-flex">
+      <h4>{{signature.name}}</h4>
+    </div>
+    <div class="actions">
+      <i class="far " [ngClass]="{'fa-minus-square': !collapsed, 'fa-plus-square': collapsed}"></i>
+    </div>
+  </header>
+  <p-panel styleClass="panel-no-header" [toggleable]="true" [collapsed]="collapsed">
+    <div class="container p-0" >
+      <div class="row ">
+        <div class="col-12 col-lg-6">
+          <div class="row mb-3 d-md-none">
+            <app-text-area [type]="'text'" [label] = "'Názov podpisu'" [value]="signature.name"></app-text-area>
+          </div>
+
+          <div class="row mb-3">
+            <app-text-area [type]="'text'" [label] = "'Čas podpísania'" [value]="signature.signingDate"></app-text-area>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-12">
+              <app-text-area [type]="'text'" [label] = "'Formát podpisu'" [value]="signature.format"></app-text-area>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6">
+          <div class="row mb-3">
+            <div class="col-12">
+              <app-text-area [type]="'list'" [label] = "'Chyby overenia'" [value]="signature.errors"></app-text-area>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <div class="row mb-3">
+            <div class="col-12">
+              <app-text-area [type]="'doc-scope'" [label] = "'Rozsah podpisu'" [value]="signature.scopeItems"></app-text-area>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p-panel>
+</div>

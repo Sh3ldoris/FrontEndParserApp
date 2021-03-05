@@ -1,0 +1,18 @@
+<div class="text-area">
+  <div class="label glossy" style="display: block">{{label || '?'}}</div>
+
+  <div class="text" *ngIf="value == null">?</div>
+
+  <div class="list" ngSwitch="{{type}}">
+
+    <div class="text value" *ngSwitchCase="'text'" style="display: block">{{value}}</div>
+
+    <div class="" *ngSwitchCase="'list'">
+      <div class="text value" *ngFor="let text of value" style="display: block"><p>{{text}}</p></div>
+    </div>
+
+    <div class="" *ngSwitchCase="'doc-scope'">
+      <div class="text value" *ngFor="let item of value"><i class="far fa-file-alt"></i> {{item.name}} - {{item.scope}}</div>
+    </div>
+  </div>
+</div>

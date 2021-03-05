@@ -17,6 +17,31 @@
   .border-left {
     border-right: 1px solid #e3e3e3 !important;
   }
+
+
+  .file-signatures {
+    background-color: white;
+    border: 2px solid #d7d7d7;
+    border-radius: 3px;
+
+    .header {
+      background-color: #d7d7d7;
+      padding: 1px 12px 3px 12px;
+
+      display: flex;
+      min-height: 26px;
+
+      h3 {
+        margin: 0;
+        font-size: 1.15em;
+      }
+    }
+
+    .signatures-wrapper {
+      min-height:  110px;
+    }
+  }
+
 }
 
 @media (max-width: 992px) {
