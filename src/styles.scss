@@ -9,6 +9,12 @@ body {
   }
 }
 
+.upload-no-buttons {
+  .p-fileupload-buttonbar {
+    display: none !important;
+  }
+}
+
 .glossy {
   background-color: #AAA;
   background-image: linear-gradient( /* chrome */

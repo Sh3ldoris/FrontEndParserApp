@@ -9,6 +9,13 @@
     padding: 20px !important;
   }
 
+  .text {
+    white-space: nowrap;
+    width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .actions {
     position: absolute;
     top: 50%;

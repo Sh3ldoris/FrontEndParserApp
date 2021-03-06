@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FileUploadService} from "../../services/file-upload.service";
 import {FileUploadRequest} from "../../model/file-upload-request";
 import {ContainerReport} from "../../interface/container-report";
 import {ContainerService} from "../../shared-service/container.service";
+import {FileUpload} from "primeng/fileupload";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Component({
   selector: 'app-upload-file',
@@ -11,13 +13,19 @@ import {ContainerService} from "../../shared-service/container.service";
 })
 export class UploadFileComponent implements OnInit {
 
+  @ViewChild('fileUpload')
+  public fileUpload: FileUpload;
+
   uploadedFiles: any[] = [];
 
   constructor(private uploadService: FileUploadService,
               private reportService: ContainerService) { }
 
   ngOnInit(): void {
+  }
 
+  hej() {
+    this.fileUpload.upload();
   }
 
   upload(event) {

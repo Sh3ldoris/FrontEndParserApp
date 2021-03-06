@@ -1,7 +1,8 @@
 <div class="container py-1 px-0">
   <header class="header"  style="background-color: #cfb0b0" (click)="collapsed = !collapsed">
-    <div class="d-flex">
-      <h4>{{signature.name}}</h4>
+    <div class="text">
+      <h4>{{signature.name}} ({{signDateStr}})</h4>
+      <!--<h4 class="d-none d-md-inline-block" style="padding-left: 5px"> ({{signDateStr}})</h4>-->
     </div>
     <div class="actions">
       <i class="far " [ngClass]="{'fa-minus-square': !collapsed, 'fa-plus-square': collapsed}"></i>
@@ -16,7 +17,7 @@
           </div>
 
           <div class="row mb-3">
-            <app-text-area [type]="'text'" [label] = "'Čas podpísania'" [value]="signature.signingDate"></app-text-area>
+            <app-text-area [type]="'text'" [label] = "'Čas podpísania'" [value]="signDateStr"></app-text-area>
           </div>
 
           <div class="row mb-3">

@@ -24,7 +24,12 @@
   .document-wrapper {
     min-height:  110px;
     max-height: 110px;
+
+    padding: 0 24px;
+
     overflow: auto;
+    width: 100%;
+    white-space: pre;
 
     .document {
       padding: 3px 0px;
@@ -43,4 +48,13 @@
   }
 }
 
+
+@media (max-width: 400px) {
+  .file-documents {
+    .document-wrapper{
+      padding: 0 10px;
+    }
+  }
+
+}
 

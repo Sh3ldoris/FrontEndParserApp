@@ -1,5 +1,6 @@
 <div class="card ">
-  <p-fileUpload name="demo[]" (uploadHandler)="upload($event)"
+  <button (click)="hej()">Hej</button>
+  <p-fileUpload styleClass="upload-no-buttons" name="demo[]" #fileUpload (uploadHandler)="upload($event)"
                 (onRemove)="onRemoveMethod($event)" (onClear)="onRemoveMethod($event)"
                 customUpload="true"
                 accept=""  cancelLabel="Zrušiť"
