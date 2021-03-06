@@ -15,6 +15,11 @@ body {
   }
 }
 
+.btn:focus,.btn:active {
+  outline: none !important;
+  box-shadow: none;
+}
+
 .glossy {
   background-color: #AAA;
   background-image: linear-gradient( /* chrome */

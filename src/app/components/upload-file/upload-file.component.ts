@@ -4,7 +4,6 @@ import {FileUploadRequest} from "../../model/file-upload-request";
 import {ContainerReport} from "../../interface/container-report";
 import {ContainerService} from "../../shared-service/container.service";
 import {FileUpload} from "primeng/fileupload";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Component({
   selector: 'app-upload-file',
@@ -15,8 +14,8 @@ export class UploadFileComponent implements OnInit {
 
   @ViewChild('fileUpload')
   public fileUpload: FileUpload;
-
   uploadedFiles: any[] = [];
+  isLoading: boolean = false;
 
   constructor(private uploadService: FileUploadService,
               private reportService: ContainerService) { }
@@ -24,11 +23,18 @@ export class UploadFileComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  hej() {
-    this.fileUpload.upload();
+  chooseFile() {
+    document.querySelector('input').click();
+  }
+
+  addFile(event) {
+    for (let file of event.currentFiles) {
+      this.uploadedFiles.push(file);
+    }
   }
 
   upload(event) {
+    this.isLoading = true;
     const file = event.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(event.files[0]);
@@ -39,25 +45,14 @@ export class UploadFileComponent implements OnInit {
         .subscribe( (data : ContainerReport) => {
           this.reportService.changeReport(data);
           this.reportService.changeSelectedFile(file)
+          this.isLoading = false;
         });
     };
-
-    /*for(let file of event.files) {
-      this.uploadedFiles.push(file);
-      console.log('Hej');
-    }*/
-  }
-
-  myUploader(event) {
-    console.log('hek');
-  }
-
-  onBasicUploadAuto(event) {
-    console.log('hek');
   }
 
   onRemoveMethod(event) {
     this.reportService.cleanReport();
+    this.uploadedFiles = [];
   }
 
 }

@@ -16,6 +16,7 @@ import {PanelModule} from 'primeng/panel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TextAreaComponent } from './components/text-area/text-area.component';
 import {TooltipModule} from 'primeng/tooltip';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {TooltipModule} from 'primeng/tooltip';
     UploadFileComponent,
     VerificationInfoComponent,
     SignatureDetailComponent,
-    TextAreaComponent
+    TextAreaComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

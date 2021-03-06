@@ -1,15 +1,39 @@
-<div class="card ">
-  <button (click)="hej()">Hej</button>
-  <p-fileUpload styleClass="upload-no-buttons" name="demo[]" #fileUpload (uploadHandler)="upload($event)"
-                (onRemove)="onRemoveMethod($event)" (onClear)="onRemoveMethod($event)"
-                customUpload="true"
-                accept=""  cancelLabel="Zrušiť"
-                uploadLabel="Odošli dokument" chooseLabel="Vyrať" >
-    <ng-template pTemplate="content" >
+<div class="section container p-0">
+  <div class="row">
+    <div class="col-12">
+      <div class="btn-header">
+        <button class="btn btn-secondary" (click)="chooseFile()">
+          <span class="pi pi-plus p-button-icon p-button-icon-left" style="margin-right: 2px"></span>
+          Vybrať
+        </button>
+        <button class="btn btn-secondary" [disabled]="uploadedFiles.length == 0" (click)="fileUpload.upload()">
+          <span class="pi pi-upload p-button-icon p-button-icon-left" style="margin-right: 2px"></span>
+          Odošli dokument
+        </button>
+        <button class="btn btn-secondary" [disabled]="uploadedFiles.length == 0" (click)="fileUpload.clear()">
+          <span class="pi pi-times p-button-icon p-button-icon-left" style="margin-right: 2px"></span>
+          Zrušiť
+        </button>
+
+        <div class="spinner" *ngIf="isLoading"><app-loading></app-loading></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <p-fileUpload styleClass="upload-no-buttons" name="file-upl" #fileUpload
+                  (uploadHandler)="upload($event)"
+                  (onRemove)="onRemoveMethod($event)"
+                  (onClear)="onRemoveMethod($event)"
+                  (onSelect)="addFile($event)"
+                  customUpload="true"
+                  accept="" >
+      <ng-template pTemplate="content" >
         <!--<ul *ngIf="uploadedFiles.length">
           <li class="hej" *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes {{uploadedFiles.length}}</li>
         </ul>-->
-    </ng-template>
-  </p-fileUpload>
+      </ng-template>
+    </p-fileUpload>
+  </div>
 
 </div>
