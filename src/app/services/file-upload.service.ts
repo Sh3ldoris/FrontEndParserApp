@@ -10,6 +10,6 @@ export class FileUploadService {
   constructor(private http: HttpClient) { }
 
   public upload(file: FileUploadRequest) {
-    return this.http.post('/parse', file);
+    return this.http.post('/api/parse', file);
   }
 }

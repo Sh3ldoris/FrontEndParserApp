@@ -19,4 +19,19 @@ export class FileDocsOverwiewComponent implements OnInit {
     });
 
   }
+
+  public openDocument(bStr: string, type: string) {
+    const xmlStr = this.decodeBase(bStr);
+
+    let blob = new Blob([xmlStr], {type: type});
+    let url = URL.createObjectURL(blob);
+    window.open(url, '_blank');
+    URL.revokeObjectURL(url);
+  }
+
+  private decodeBase(str: string) {
+    return decodeURIComponent(atob(str).split('').map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+  }
 }

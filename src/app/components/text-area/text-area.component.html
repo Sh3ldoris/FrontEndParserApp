@@ -3,16 +3,19 @@
 
   <div class="text" *ngIf="value == null">?</div>
 
-  <div class="list" ngSwitch="{{type}}">
+  <div class="list" [ngClass]="{'single-line' : type == 'doc-scope'}" ngSwitch="{{type}}">
 
     <div class="text value" *ngSwitchCase="'text'" style="display: block">{{value}}</div>
 
     <div class="" *ngSwitchCase="'list'">
-      <div class="text value" *ngFor="let text of value" style="display: block"><p>{{text}}</p></div>
+      <div class="text value" *ngFor="let text of value" style="display: block"><p class="dot">{{text}}</p></div>
     </div>
 
     <div class="" *ngSwitchCase="'doc-scope'">
-      <div class="text value" *ngFor="let item of value"><i class="far fa-file-alt"></i> {{item.name}} - {{item.scope}}</div>
+      <div class="text value" *ngFor="let item of value" >
+        <div class="" style="display: block"><i class="far fa-file-alt"></i> {{item.name}}</div>
+        <div class="" style="display: block"><p> - {{item.scope}}</p></div>
+      </div>
     </div>
   </div>
 </div>

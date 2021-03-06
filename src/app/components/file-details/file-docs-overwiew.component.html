@@ -6,10 +6,16 @@
 
   <div class="container document-wrapper" [ngClass]=" {'d-flex align-items-center' : report?.originalDocuments == null } ">
     <div *ngIf="report?.originalDocuments != null" class="">
-      <div class="row" *ngFor="let doc of report.originalDocuments">
-        <div class="col-12 doc-name">
-          {{doc.name}}
-        </div>
+      <div class="document" *ngFor="let doc of report.originalDocuments">
+          <a
+            *ngIf="doc.type == 'text/xml'"
+            pTooltip="Otvoriť dokument v novom tabe"
+            showDelay="1000"
+            (click)="openDocument(doc.base64Content, doc.type)"
+          >
+            {{doc.name}} <i *ngIf="doc.type =='text/xml'" class="fas fa-external-link-alt" style="font-size: 10px"></i>
+          </a>
+          <div *ngIf="doc.type != 'text/xml'">{{doc.name}}</div>
       </div>
     </div>
     <div *ngIf="report?.originalDocuments == null" class="w-100" >

@@ -21,7 +21,7 @@ export class UploadFileComponent implements OnInit {
   }
 
   upload(event) {
-   const file = event.files[0];
+    const file = event.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(event.files[0]);
 

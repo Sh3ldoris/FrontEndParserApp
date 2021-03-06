@@ -15,6 +15,7 @@ import { SignatureDetailComponent } from './components/signature-detail/signatur
 import {PanelModule} from 'primeng/panel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TextAreaComponent } from './components/text-area/text-area.component';
+import {TooltipModule} from 'primeng/tooltip';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TextAreaComponent } from './components/text-area/text-area.component';
     HttpClientModule,
     FileUploadModule,
     PanelModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    TooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

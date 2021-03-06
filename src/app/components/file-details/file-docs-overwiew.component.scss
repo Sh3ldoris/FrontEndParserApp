@@ -25,6 +25,21 @@
     min-height:  110px;
     max-height: 110px;
     overflow: auto;
+
+    .document {
+      padding: 3px 0px;
+      display: block;
+
+      a {
+        color: black;
+        text-decoration: underline;
+      }
+
+      a:hover {
+        cursor: pointer;
+        color: #5C4739;
+      }
+    }
   }
 }
 
