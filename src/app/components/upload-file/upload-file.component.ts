@@ -28,24 +28,35 @@ export class UploadFileComponent implements OnInit {
   }
 
   addFile(event) {
+    this.fileUpload.clear();
+    this.uploadedFiles = [];
     for (let file of event.currentFiles) {
       this.uploadedFiles.push(file);
     }
   }
 
   upload(event) {
+
+    if (this.uploadedFiles[0] == null)
+      return;
+
     this.isLoading = true;
-    const file = event.files[0];
+    const file = this.uploadedFiles[0];
     const reader = new FileReader();
-    reader.readAsDataURL(event.files[0]);
+    reader.readAsDataURL(file);
 
     reader.onload = () => {
       const base = reader.result as string;
       this.uploadService.upload(new FileUploadRequest(base.split(',')[1], file.name))
-        .subscribe( (data : ContainerReport) => {
+        .subscribe(
+          (data : ContainerReport) => {
           this.reportService.changeReport(data);
           this.reportService.changeSelectedFile(file)
           this.isLoading = false;
+        }, error => {
+          this.isLoading = false;
+          this.fileUpload.clear();
+          console.log(error);
         });
     };
   }

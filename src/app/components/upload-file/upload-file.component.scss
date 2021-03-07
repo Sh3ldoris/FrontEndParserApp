@@ -38,6 +38,27 @@
    }
  }
 
+ .document-row {
+   position: relative;
+
+   .far {
+     position: absolute;
+     left: 0px;
+   }
+
+   .file-info {
+     position: absolute;
+     left: 50%;
+     transform: translateX(-50%);
+   }
+
+   .btn {
+     position: absolute;
+     right: 0px;
+   }
+
+ }
+
 
  @media (max-width: 500px) {
    .section{

@@ -19,8 +19,10 @@ export class VerificationInfoComponent implements OnInit {
       this.report = rep;
       if (rep != null) {
         this.verificationDate = new Date(rep.validationDate);
-        this.verDateStr = this.verificationDate.getDay() + '.' + this.verificationDate.getMonth() + '.' + this.verificationDate.getFullYear()
-          + ' ' + this.verificationDate.getHours() + ':' + this.verificationDate.getMinutes() + ':' + this.verificationDate.getSeconds();
+        let minutes = + this.verificationDate.getMinutes() < 10 ? '0' + this.verificationDate.getMinutes() : this.verificationDate.getMinutes();
+        let hours = + this.verificationDate.getHours() < 10 ? '0' + this.verificationDate.getHours() : this.verificationDate.getHours();
+        this.verDateStr = this.verificationDate.getDate() + '.' + this.verificationDate.getMonth() + '.' + this.verificationDate.getFullYear()
+          + ' ' + this.verificationDate.getHours() + ':' + minutes + ':' + hours;
       }
     });
   }

@@ -29,9 +29,13 @@
                   customUpload="true"
                   accept="" >
       <ng-template pTemplate="content" >
-        <!--<ul *ngIf="uploadedFiles.length">
-          <li class="hej" *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes {{uploadedFiles.length}}</li>
-        </ul>-->
+        <div *ngIf="uploadedFiles.length">
+          <div class="document-row" style="display: block" *ngFor="let file of uploadedFiles">
+            <i class="far fa-file-archive"></i>
+            <h4 class="file-info">{{file.name}} - {{file.size}} bytes</h4>
+            <button class="btn btn-small" style="background: #5C4739; color: white" (click)="fileUpload.clear()"><span class="pi pi-times p-button-icon p-button-icon-center"></span></button>
+          </div>
+        </div>
       </ng-template>
     </p-fileUpload>
   </div>
