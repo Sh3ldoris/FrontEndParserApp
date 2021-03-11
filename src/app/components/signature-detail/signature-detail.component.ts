@@ -21,7 +21,7 @@ export class SignatureDetailComponent implements OnInit {
     let minutes = + this.signDate.getMinutes() < 10 ? '0' + this.signDate.getMinutes() : this.signDate.getMinutes();
     let hours = + this.signDate.getHours() < 10 ? '0' + this.signDate.getHours() : this.signDate.getHours();
     this.signDateStr = this.signDate.getDate() + '.' + this.signDate.getMonth() + '.' + this.signDate.getFullYear()
-      + ' ' + this.signDate.getHours() + ':' + minutes + ':' + hours;
+      + ' - ' + this.signDate.getHours() + ':' + minutes + ':' + hours;
   }
 
 }

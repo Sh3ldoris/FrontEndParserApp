@@ -4,6 +4,7 @@ import {FileUploadRequest} from "../../model/file-upload-request";
 import {ContainerReport} from "../../interface/container-report";
 import {ContainerService} from "../../shared-service/container.service";
 import {FileUpload} from "primeng/fileupload";
+import {MessagesService} from "../../shared-service/messages.service";
 
 @Component({
   selector: 'app-upload-file',
@@ -18,7 +19,8 @@ export class UploadFileComponent implements OnInit {
   isLoading: boolean = false;
 
   constructor(private uploadService: FileUploadService,
-              private reportService: ContainerService) { }
+              private reportService: ContainerService,
+              private messageShowService: MessagesService) { }
 
   ngOnInit(): void {
   }
@@ -56,9 +58,18 @@ export class UploadFileComponent implements OnInit {
         }, error => {
           this.isLoading = false;
           this.fileUpload.clear();
+          this.messageShowService.changeMessage(
+            {severity: 'error', key: 'error', summary:'Chyba', detail:'Nepodporovaný typ súboru'}
+          );
           console.log(error);
         });
     };
+  }
+
+  formatBytes(a,b=2){
+    if(0===a)return"0 Bytes";
+    const c=0>b?0:b,d=Math.floor(Math.log(a)/Math.log(1024));
+    return parseFloat((a/Math.pow(1024,d)).toFixed(c))+" "+["Bytes","kB","MB","GB","TB","PB","EB","ZB","YB"][d];
   }
 
   onRemoveMethod(event) {

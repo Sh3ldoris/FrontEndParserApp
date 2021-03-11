@@ -39,22 +39,21 @@
  }
 
  .document-row {
-   position: relative;
+   background-color: #eae2dd;
+   border: 0;
+   border-radius: 4px;
 
    .far {
-     position: absolute;
-     left: 0px;
+     font-size: 30px;
    }
 
    .file-info {
-     position: absolute;
-     left: 50%;
-     transform: translateX(-50%);
+     margin: 0;
    }
 
    .btn {
-     position: absolute;
-     right: 0px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
    }
 
  }

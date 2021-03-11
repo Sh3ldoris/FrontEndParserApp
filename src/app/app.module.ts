@@ -17,6 +17,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TextAreaComponent } from './components/text-area/text-area.component';
 import {TooltipModule} from 'primeng/tooltip';
 import { LoadingComponent } from './components/loading/loading.component';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { LoadingComponent } from './components/loading/loading.component';
     FileUploadModule,
     PanelModule,
     BrowserAnimationsModule,
-    TooltipModule
+    TooltipModule,
+    MessagesModule,
+    MessageModule,
+    ScrollPanelModule
   ],
   providers: [],
   bootstrap: [AppComponent]

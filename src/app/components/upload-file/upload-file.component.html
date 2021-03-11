@@ -28,12 +28,22 @@
                   (onSelect)="addFile($event)"
                   customUpload="true"
                   accept="" >
-      <ng-template pTemplate="content" >
-        <div *ngIf="uploadedFiles.length">
-          <div class="document-row" style="display: block" *ngFor="let file of uploadedFiles">
-            <i class="far fa-file-archive"></i>
-            <h4 class="file-info">{{file.name}} - {{file.size}} bytes</h4>
-            <button class="btn btn-small" style="background: #5C4739; color: white" (click)="fileUpload.clear()"><span class="pi pi-times p-button-icon p-button-icon-center"></span></button>
+      <ng-template pTemplate="content">
+        <div class="container px-3" *ngIf="uploadedFiles.length">
+          <div class="document-row row" *ngFor="let file of uploadedFiles">
+            <div class="col-md-1 px-3 d-flex align-items-center">
+              <i class="far ml-2 fa-file-archive"></i>
+            </div>
+            <div class="col-md-6 d-flex justify-content-center align-items-center">
+              <p class="my-2 file-info text-center">{{file.name}}</p>
+            </div>
+            <div class="col-md-3 d-flex justify-content-center align-items-center">
+              <p class="file-info my-2"> {{formatBytes(file.size)}}</p>
+            </div>
+            <div class="col-0 col-md-1"></div>
+            <div class="col-md-1 p-0 d-flex justify-content-end">
+              <button class="btn w-100" style="background: #5C4739; color: white" (click)="fileUpload.clear()"><span class="pi pi-times p-button-icon p-button-icon-center"></span></button>
+            </div>
           </div>
         </div>
       </ng-template>
