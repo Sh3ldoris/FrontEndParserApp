@@ -21,9 +21,9 @@ export class FileDocsOverwiewComponent implements OnInit {
   }
 
   public openDocument(bStr: string, type: string) {
-    const xmlStr = this.decodeBase(bStr);
+    const dataToDisplay = this.decodeBase(bStr);
 
-    let blob = new Blob([xmlStr], {type: type});
+    let blob = new Blob([dataToDisplay], {type: type});
     let url = URL.createObjectURL(blob);
     window.open(url, '_blank');
     URL.revokeObjectURL(url);

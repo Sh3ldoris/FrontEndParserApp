@@ -41,6 +41,7 @@ export class UploadFileComponent implements OnInit {
 
     if (this.uploadedFiles[0] == null)
       return;
+    console.log(this.uploadedFiles[0]);
 
     this.isLoading = true;
     const file = this.uploadedFiles[0];
@@ -49,9 +50,10 @@ export class UploadFileComponent implements OnInit {
 
     reader.onload = () => {
       const base = reader.result as string;
-      this.uploadService.upload(new FileUploadRequest(base.split(',')[1], file.name))
+      this.uploadService.upload(new FileUploadRequest(base.split(',')[1],file.type ,file.name))
         .subscribe(
           (data : ContainerReport) => {
+            console.log(data);
           this.reportService.changeReport(data);
           this.reportService.changeSelectedFile(file)
           this.isLoading = false;

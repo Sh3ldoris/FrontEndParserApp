@@ -20,9 +20,30 @@
 
   .info-section {
     overflow: auto;
-    min-height: 115px;
-    max-height: 115px;
+    min-height: 140px;
+    max-height: 140px;
+
+    .btn {
+      padding-top: 3px!important;
+      padding-bottom: 5px!important;
+      width: 100%;
+      background-color: #5C4739;
+      border: #5C4739;
+
+      color: #f9f9f9;
+      font-size: 0.8em;
+
+      &:hover {
+        background-color: #4c3b32;
+        border: #5C4739;
+      }
+    }
   }
 }
+
+  .p-dialog {
+    min-width: 50vw!important;
+  }
+
 
 

@@ -29,9 +29,14 @@
                   customUpload="true"
                   accept="" >
       <ng-template pTemplate="content">
-        <div class="container px-3" *ngIf="uploadedFiles.length">
+      </ng-template>
+    </p-fileUpload>
+
+    <div class="col-12">
+      <div class="file-section">
+        <div class="container" style="padding-top: 16px" *ngIf="uploadedFiles.length">
           <div class="document-row row" *ngFor="let file of uploadedFiles">
-            <div class="col-md-1 px-3 d-flex align-items-center">
+            <div class="col-md-1 px-3 mt-3 mt-md-0 d-flex align-items-center justify-content-center">
               <i class="far ml-2 fa-file-archive"></i>
             </div>
             <div class="col-md-6 d-flex justify-content-center align-items-center">
@@ -42,12 +47,12 @@
             </div>
             <div class="col-0 col-md-1"></div>
             <div class="col-md-1 p-0 d-flex justify-content-end">
-              <button class="btn w-100" style="background: #5C4739; color: white" (click)="fileUpload.clear()"><span class="pi pi-times p-button-icon p-button-icon-center"></span></button>
+              <button class="btn w-100" (click)="fileUpload.clear()"><span class="pi pi-times p-button-icon p-button-icon-center"></span></button>
             </div>
           </div>
         </div>
-      </ng-template>
-    </p-fileUpload>
+      </div>
+    </div>
   </div>
 
 </div>

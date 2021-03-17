@@ -1,4 +1,4 @@
-<div class="file-detail-wrapper pb-3">
+<div class="file-detail-wrapper pb-2">
   <div class="heading-detail glossy p-2">
     <h2>Dokument - informácie</h2>
   </div>
@@ -41,6 +41,33 @@
         </div>
       </div>
 
+      <div class="row mt-3" *ngIf="isLoadingVisualizations">
+          <div class="col-7 d-flex justify-content-end pt-1" style="font-size: 0.9em; color: #bfbfbf">
+            Hľadajú sa vizualizácie
+          </div>
+          <div class="col-5 d-flex justify-content-start">
+            <app-loading2></app-loading2>
+          </div>
+      </div>
+
+      <div class="row mt-3" *ngIf="!isLoadingVisualizations && visualizations.length">
+        <div class="col-6 offset-3">
+          <button class="btn" (click)="showVisualozationDialog()">Vizualizácie</button>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
+
+<p-dialog header="Vizualizácie" [(visible)]="displayModal"
+          [modal]="true" styleClass="hej"
+          [baseZIndex]="10000"
+          [draggable]="false" [resizable]="false">
+  <div class="container">
+    <app-visualozation *ngFor="let vis of visualizations" [data]="vis"></app-visualozation>
+  </div>
+  <ng-template pTemplate="footer">
+
+  </ng-template>
+</p-dialog>

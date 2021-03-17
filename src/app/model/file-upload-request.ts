@@ -1,8 +1,11 @@
 export class FileUploadRequest {
-  container: string;
+  base64Content: string;
+  type: string;
   name: string;
-  constructor(file: string, name: string) {
-    this.container = file;
+
+  constructor(file: string, type: string, name: string) {
+    this.base64Content = file;
+    this.type = type;
     this.name = name;
   }
 }

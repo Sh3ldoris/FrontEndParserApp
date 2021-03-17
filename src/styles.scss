@@ -9,10 +9,53 @@ body {
   }
 }
 
+.p-dialog {
+  min-width: 40vw;
+  border: 2px solid #4f3d32 !important;
+  border-radius: 4px!important;
+
+  @media (max-width: 1350px) {
+    min-width: 55vw;
+  }
+
+  @media (max-width: 1000px) {
+    min-width: 75vw;
+  }
+
+  @media (max-width: 750px) {
+    min-width: 95vw;
+    max-width: 95vw;
+  }
+
+}
+
+.p-dialog-header {
+  background-color: #4f3d32!important;
+  padding: 10px 16px!important;
+  color: white!important;
+  border-radius: 0px!important;
+
+  background-image: linear-gradient(
+      hsla(0, 0%, 50%, 0.6), hsla(0, 0%, 40%, 0) 10%,
+      hsla(0, 0%, 0%, 0.3) 30%, hsla(0, 0%, 60%, 0.2)
+  ) !important;
+}
+
+.p-dialog-header-icon {
+  color: white!important;
+  &:hover {
+    color: #6c757d!important;
+  }
+}
+
 .upload-no-buttons {
   .p-fileupload-buttonbar {
     display: none !important;
   }
+}
+
+.p-fileupload {
+  display: none !important;
 }
 
 .btn:focus,.btn:active {

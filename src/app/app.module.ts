@@ -20,6 +20,9 @@ import { LoadingComponent } from './components/loading/loading.component';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
+import { Loading2Component } from './components/loading2/loading2.component';
+import {DialogModule} from 'primeng/dialog';
+import { VisualozationComponent } from './components/visualozation/visualozation.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import {ScrollPanelModule} from 'primeng/scrollpanel';
     VerificationInfoComponent,
     SignatureDetailComponent,
     TextAreaComponent,
-    LoadingComponent
+    LoadingComponent,
+    Loading2Component,
+    VisualozationComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,8 @@ import {ScrollPanelModule} from 'primeng/scrollpanel';
     TooltipModule,
     MessagesModule,
     MessageModule,
-    ScrollPanelModule
+    ScrollPanelModule,
+    DialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

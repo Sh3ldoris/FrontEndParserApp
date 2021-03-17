@@ -19,7 +19,7 @@
      .spinner {
        position: absolute;
        top: 50%;
-       right: 16px;
+       right: 25px;
        transform: translateY(-50%);
      }
 
@@ -29,12 +29,20 @@
        border: #5C4739;
        min-height: 42px;
        margin-right: 7px;
-     }
 
-     .btn:hover {
-       background-color: #4c3b32;
-       border: #5C4739;
+       &:hover {
+         background-color: #4c3b32;
+         border: #5C4739;
+       }
      }
+   }
+
+   .file-section {
+     min-height: 283px;
+     border: 2px dashed #5C4739;
+     border-top: 0 none;
+     border-bottom-right-radius: 3px;
+     border-bottom-left-radius: 3px;
    }
  }
 
@@ -42,6 +50,7 @@
    background-color: #eae2dd;
    border: 0;
    border-radius: 4px;
+   min-height: 60px;
 
    .far {
      font-size: 30px;
@@ -52,10 +61,16 @@
    }
 
    .btn {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-   }
+     background: #5C4739;
+     color: white;
+     border-top-left-radius: 0;
+     border-bottom-left-radius: 0;
 
+     &:hover {
+       background-color: #4c3b32;
+       border: #5C4739;
+     }
+   }
  }
 
 

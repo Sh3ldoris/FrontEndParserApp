@@ -18,7 +18,6 @@ export class VerificationInfoComponent implements OnInit {
     this.reportService.currentReport.subscribe(rep => {
       this.report = rep;
       if (rep != null) {
-        console.log(this.report.signatures[0]);
         this.verificationDate = new Date(rep.validationDate);
         let minutes = + this.verificationDate.getMinutes() < 10 ? '0' + this.verificationDate.getMinutes() : this.verificationDate.getMinutes();
         let hours = + this.verificationDate.getHours() < 10 ? '0' + this.verificationDate.getHours() : this.verificationDate.getHours();
