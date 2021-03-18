@@ -12,50 +12,48 @@
       <div class="col-12 border-bottom mb-2 mt-1"></div>
     </div>
 
-    <div class="container info-section">
+    <div class="row info-section px-4">
 
-      <div class="row">
-        <div class="col-4">
-          Názov
-        </div>
-        <div class="col-8">
-          {{report?.containerName != null ? report.containerName : '?'}}
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-4">
-          Veľkosť
-        </div>
-        <div class="col-8">
-          {{size != null ? formatBytes(size) : '?'}}
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-4">
-          Druh obsahu
-        </div>
-        <div class="col-8">
-          {{fileType != null ? fileType : '?'}}
-        </div>
-      </div>
-
-      <div class="row mt-3" *ngIf="isLoadingVisualizations">
-          <div class="col-7 d-flex justify-content-end pt-1" style="font-size: 0.9em; color: #bfbfbf">
-            Hľadajú sa vizualizácie
+      <div class="col-12">
+        <div class="row">
+          <div class="col-4">
+            Názov
           </div>
-          <div class="col-5 d-flex justify-content-start">
-            <app-loading2></app-loading2>
+          <div class="col-8 p-0 text-nowrap">
+            {{report?.containerName != null ? report.containerName : '?'}}
           </div>
-      </div>
+        </div>
 
-      <div class="row mt-3" *ngIf="!isLoadingVisualizations && visualizations.length">
-        <div class="col-6 offset-3">
+        <div class="row">
+          <div class="col-4">
+            Veľkosť
+          </div>
+          <div class="col-8 p-0 text-nowrap">
+            {{size != null ? formatBytes(size) : '?'}}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4">
+            Druh obsahu
+          </div>
+          <div class="col-8 p-0 text-nowrap">
+            {{fileType != null ? fileType : '?'}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row visualization-section">
+        <div class="col-7 d-flex justify-content-end my-auto" style="font-size: 0.9em; color: #bfbfbf" *ngIf="isLoadingVisualizations">
+          Hľadajú sa vizualizácie
+        </div>
+        <div class="col-5 d-flex justify-content-start" *ngIf="isLoadingVisualizations">
+          <app-loading2></app-loading2>
+        </div>
+        <div class="col-3" *ngIf="!isLoadingVisualizations && visualizations.length"></div>
+        <div class="col-6  m-0 p-0" *ngIf="!isLoadingVisualizations && visualizations.length">
           <button class="btn" (click)="showVisualozationDialog()">Vizualizácie</button>
         </div>
-      </div>
-
     </div>
   </div>
 </div>
@@ -64,7 +62,7 @@
           [modal]="true" styleClass="hej"
           [baseZIndex]="10000"
           [draggable]="false" [resizable]="false">
-  <div class="container">
+  <div class="container p-0 p-md-3">
     <app-visualozation *ngFor="let vis of visualizations" [data]="vis"></app-visualozation>
   </div>
   <ng-template pTemplate="footer">

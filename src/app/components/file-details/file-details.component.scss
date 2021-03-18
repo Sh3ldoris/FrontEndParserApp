@@ -20,8 +20,13 @@
 
   .info-section {
     overflow: auto;
-    min-height: 140px;
-    max-height: 140px;
+    min-height: 110px;
+    max-height: 110px;
+  }
+
+  .visualization-section {
+    min-height: 40px;
+    max-height: 40px;
 
     .btn {
       padding-top: 3px!important;
