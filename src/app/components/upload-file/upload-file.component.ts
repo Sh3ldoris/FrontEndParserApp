@@ -60,10 +60,10 @@ export class UploadFileComponent implements OnInit {
         }, error => {
           this.isLoading = false;
           this.fileUpload.clear();
+          const message = (error.status === 415) ? 'Nepodporovaný typ súboru!' : 'Neočakávaná chyba serveru!'
           this.messageShowService.changeMessage(
-            {severity: 'error', key: 'error', summary:'Chyba', detail:'Nepodporovaný typ súboru'}
+            {severity: 'error', key: 'error', summary:'Chyba', detail: message}
           );
-          console.log(error);
         });
     };
   }
@@ -75,6 +75,7 @@ export class UploadFileComponent implements OnInit {
   }
 
   onRemoveMethod(event) {
+    this.isLoading = false;
     this.reportService.cleanReport();
     this.uploadedFiles = [];
   }

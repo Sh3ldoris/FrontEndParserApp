@@ -33,7 +33,7 @@
     </p-fileUpload>
 
     <div class="col-12">
-      <div class="file-section">
+      <div class="file-section" [ngClass]=" {'d-flex align-items-center container' : !uploadedFiles.length} ">
         <div class="container" style="padding-top: 16px" *ngIf="uploadedFiles.length">
           <div class="document-row row" *ngFor="let file of uploadedFiles">
             <div class="col-md-1 px-3 mt-3 mt-md-0 d-flex align-items-center justify-content-center">
@@ -50,6 +50,9 @@
               <button class="btn w-100" (click)="fileUpload.clear()"><span class="pi pi-times p-button-icon p-button-icon-center"></span></button>
             </div>
           </div>
+        </div>
+        <div class="col-12 d-flex justify-content-center" style="color: #d7d7d7" *ngIf="!uploadedFiles.length">
+          Podporované súbory: ASiC XAdES, ASiC CAdES
         </div>
       </div>
     </div>

@@ -27,6 +27,8 @@ export class FileDetailsComponent implements OnInit {
       this.report = rep;
       if (this.report != null && this.report.originalDocuments.length)
         this.checkVisualizations(this.report.originalDocuments);
+      if (this.report == null)
+        this.visualizations = null;
     });
     this.reportService.currentFile.subscribe(file => {
       this.size = file?.size;

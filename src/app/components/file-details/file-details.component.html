@@ -47,11 +47,11 @@
         <div class="col-7 d-flex justify-content-end my-auto" style="font-size: 0.9em; color: #bfbfbf" *ngIf="isLoadingVisualizations">
           Hľadajú sa vizualizácie
         </div>
-        <div class="col-5 d-flex justify-content-start" *ngIf="isLoadingVisualizations">
+        <div class="col-5 d-flex justify-content-start my-auto" *ngIf="isLoadingVisualizations">
           <app-loading2></app-loading2>
         </div>
-        <div class="col-3" *ngIf="!isLoadingVisualizations && visualizations.length"></div>
-        <div class="col-6  m-0 p-0" *ngIf="!isLoadingVisualizations && visualizations.length">
+        <div class="col-3" *ngIf="!isLoadingVisualizations && visualizations?.length"></div>
+        <div class="col-6  m-0 p-0" *ngIf="!isLoadingVisualizations && visualizations?.length">
           <button class="btn" (click)="showVisualozationDialog()">Vizualizácie</button>
         </div>
     </div>
