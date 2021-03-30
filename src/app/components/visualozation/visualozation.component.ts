@@ -28,7 +28,7 @@ export class VisualozationComponent implements OnInit {
 
   openPdf(event) {
     event.preventDefault();
-    if (this.data.base64Pdf == null) {
+    if (this.data.base64Html == null) {
       return;
     }
 

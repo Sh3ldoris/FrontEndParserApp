@@ -11,7 +11,7 @@ export class VisualizationsService {
 
   constructor(private http: HttpClient) { }
 
-  public getVisualizations(files: OriginalDocument[]) {
+   public getVisualizations(files: OriginalDocument[]) {
     return this.http.post('/api/visualize', files);
   }
 }
