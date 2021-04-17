@@ -41,7 +41,6 @@ export class UploadFileComponent implements OnInit {
 
     if (this.uploadedFiles[0] == null)
       return;
-    console.log(this.uploadedFiles[0]);
 
     this.isLoading = true;
     const file = this.uploadedFiles[0];

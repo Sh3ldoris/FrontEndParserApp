@@ -65,7 +65,6 @@ export class FileDetailsComponent implements OnInit {
 
     this.visualizationService.getVisualizations(xmlDocs).subscribe(
       (data: VisualizationsFile[]) => {
-        console.log(data);
         this.visualizations = data;
         this.isLoadingVisualizations = false;
       },
