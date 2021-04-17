@@ -61,7 +61,7 @@ export class FileDocsOverwiewComponent implements OnInit {
 
   private openXML(bStr: string) {
     const dataToDisplay = this.decodeBase(bStr);
-    let blob = new Blob([dataToDisplay], {type: 'text/xm'});
+    let blob = new Blob([dataToDisplay], {type: 'text/xml'});
     let url = URL.createObjectURL(blob);
     window.open(url, '_blank');
     URL.revokeObjectURL(url);
