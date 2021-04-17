@@ -21,9 +21,9 @@
       </div>
     </div>
 
-    <div class="row" *ngFor="let signature of report.signatures">
+    <div class="row" *ngFor="let signature of report.signatures; index as i">
       <div class="col-12">
-        <app-signature-detail [signature]="signature"></app-signature-detail>
+        <app-signature-detail [signature]="signature" [collapsed]="i!==report.signatures.length - 1"></app-signature-detail>
       </div>
     </div>
 

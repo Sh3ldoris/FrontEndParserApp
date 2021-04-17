@@ -53,7 +53,6 @@ export class UploadFileComponent implements OnInit {
       this.uploadService.upload(new FileUploadRequest(base.split(',')[1],file.type ,file.name))
         .subscribe(
           (data : ContainerReport) => {
-            console.log(data);
           this.reportService.changeReport(data);
           this.reportService.changeSelectedFile(file)
           this.isLoading = false;
