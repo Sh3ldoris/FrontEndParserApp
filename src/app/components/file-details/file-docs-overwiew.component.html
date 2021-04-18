@@ -8,13 +8,21 @@
     <div *ngIf="report?.originalDocuments != null" class="">
       <div class="document" *ngFor="let doc of report.originalDocuments">
           <a
-            pTooltip="Otvoriť dokument v novom tabe"
+            *ngIf="doc.name != ''"
+            pTooltip="{{isSupportedFormat(doc.type) ? 'Otvoriť dokument v novom tabe': 'Formát sa nedá zobraziť v prehliadači'}}"
             showDelay="1000"
             (click)="openDocument(doc.base64Content, doc.type)"
-            [ngClass]="{'clickable' : isSupportedFormat(doc.type)}"
+            [ngClass]="{'undrln' : isSupportedFormat(doc.type)}"
           >
-            {{doc.name}} <i *ngIf="isSupportedFormat(doc.type)" class="fas fa-external-link-alt" style="font-size: 10px"></i>
+            {{doc.name}}
           </a>
+          <i
+            (click)="downloadFile(doc.base64Content, doc.type, doc.name)"
+            class="pi pi-download clickable"
+            pTooltip="Stiahnuť dokument"
+            showDelay="1000"
+            style="font-size: 14px"
+          ></i>
       </div>
     </div>
     <div *ngIf="report == null" class="w-100" >

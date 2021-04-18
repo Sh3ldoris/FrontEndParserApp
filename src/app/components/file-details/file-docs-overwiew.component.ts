@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ContainerReport} from "../../interface/container-report";
 import {ContainerService} from "../../shared-service/container.service";
+import * as fileSaver from 'file-saver';
 
 @Component({
   selector: 'app-file-docs-overwiew',
@@ -22,61 +23,35 @@ export class FileDocsOverwiewComponent implements OnInit {
   }
 
   public openDocument(bStr: string, type: string) {
-    switch (type) {
-      case this.supportedFormats[1]:
-        this.openXML(bStr);
-        break;
-      case this.supportedFormats[2]:
-        this.openPDF(bStr);
-        break;
-      case 'application/octet-stream':
-        this.openOctet(bStr);
-        break;
-      case this.supportedFormats[0]:
-        this.openTXT(bStr);
-        break;
-    }
+    if (!this.isSupportedFormat(type))
+      return;
+
+    this.openFileInBrowser(bStr, type);
+  }
+
+  public downloadFile(bStr: string, type: string, name: string) {
+    fileSaver.saveAs(this.generateFileBlob(bStr, type), name);
   }
 
   public isSupportedFormat(format: string) {
     return this.supportedFormats.includes(format);
   }
 
-  private openOctet(bStr: string) {
-    let blob = new Blob(
-      ['bStr'],
-      {
-        type: 'application/octet-stream'
-      }
-    );
-    /*let url = URL.createObjectURL(blob);
-    window.open(url, '_blank');
-    URL.revokeObjectURL(url);*/
-  }
-
-  private openPDF(bStr: string) {
-    let pdfWindow = window.open("");
-    pdfWindow.document.write("<iframe width='100%' height='100%' src='data:application/pdf;base64, " + encodeURI(bStr) + "'></iframe>");
-  }
-
-  private openXML(bStr: string) {
-    const dataToDisplay = this.decodeBase(bStr);
-    let blob = new Blob([dataToDisplay], {type: 'text/xml'});
+  private openFileInBrowser(bStr: string, type: string) {
+    let blob = this.generateFileBlob(bStr, type);
     let url = URL.createObjectURL(blob);
     window.open(url, '_blank');
     URL.revokeObjectURL(url);
   }
 
-  private openTXT(bStr: string) {
-    let blob = new Blob([atob(bStr)], {type: 'text/plain'});
-    let url = URL.createObjectURL(blob);
-    window.open(url, '_blank');
-    URL.revokeObjectURL(url);
+  private generateFileBlob(bStr: string, type: string): any {
+    const byteCharacters = atob(bStr);
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    return new Blob([byteArray], {type: type});
   }
 
-  private decodeBase(str: string) {
-    return decodeURIComponent(atob(str).split('').map(function(c) {
-      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-  }
 }

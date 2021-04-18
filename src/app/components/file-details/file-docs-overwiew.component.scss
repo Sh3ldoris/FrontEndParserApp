@@ -35,17 +35,25 @@
       padding: 3px 0px;
       display: block;
     }
+
+    a {
+      color: black;
+      text-decoration: none;
+    }
+    a:hover {
+      cursor: pointer!important;
+      color: #5C4739!important;
+    }
   }
 }
 
-.clickable {
-  color: black;
-  text-decoration: underline;
+.undrln {
+  text-decoration: underline!important;
 }
 
 .clickable:hover {
-  cursor: pointer;
-  color: #5C4739;
+  cursor: pointer!important;
+  color: #5C4739!important;
 }
 
 @media (max-width: 400px) {
