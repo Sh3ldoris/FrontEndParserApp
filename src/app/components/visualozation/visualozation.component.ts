@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {VisualizationsFile} from "../../interface/visualizations-file";
+import { generateFileBlob } from "../../shared-service/functions";
 import * as html2pdf from 'html2pdf.js';
 
 @Component({
@@ -19,8 +20,7 @@ export class VisualozationComponent implements OnInit {
     if (this.data.base64Html == null) {
       return;
     }
-    const html = this.decodeBase(this.data.base64Html);
-    let blob = new Blob([html], {type: 'text/html'});
+    let blob = generateFileBlob(this.data.base64Html, 'text/html')
     let url = URL.createObjectURL(blob);
     window.open(url, '_blank');
     URL.revokeObjectURL(url);
@@ -39,7 +39,7 @@ export class VisualozationComponent implements OnInit {
       html2canvas:  { scale: 5 },
       jsPDF:        {unit: 'pt', format: 'a3', orientation: 'p'}
     };
-    const worker = html2pdf().from(this.decodeBase(this.data.base64Html)).set(option).save();
+    html2pdf().from(this.decodeBase(this.data.base64Html)).set(option).save();
   }
 
   private decodeBase(str: string) {
@@ -47,16 +47,5 @@ export class VisualozationComponent implements OnInit {
       return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
   }
-
-  private base64ToBlob(base64) {
-    const binaryString = window.atob(base64);
-    const len = binaryString.length;
-    const bytes = new Uint8Array(len);
-    for (let i = 0; i < len; ++i) {
-      bytes[i] = binaryString.charCodeAt(i);
-    }
-
-    return new Blob([bytes], { type: 'application/pdf' });
-  };
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ContainerReport} from "../../interface/container-report";
 import {ContainerService} from "../../shared-service/container.service";
+import { generateFileBlob } from "../../shared-service/functions";
 import * as fileSaver from 'file-saver';
 
 @Component({
@@ -30,7 +31,7 @@ export class FileDocsOverwiewComponent implements OnInit {
   }
 
   public downloadFile(bStr: string, type: string, name: string) {
-    fileSaver.saveAs(this.generateFileBlob(bStr, type), name);
+    fileSaver.saveAs(generateFileBlob(bStr, type), name);
   }
 
   public isSupportedFormat(format: string) {
@@ -38,20 +39,10 @@ export class FileDocsOverwiewComponent implements OnInit {
   }
 
   private openFileInBrowser(bStr: string, type: string) {
-    let blob = this.generateFileBlob(bStr, type);
+    let blob = generateFileBlob(bStr, type);
     let url = URL.createObjectURL(blob);
     window.open(url, '_blank');
     URL.revokeObjectURL(url);
-  }
-
-  private generateFileBlob(bStr: string, type: string): any {
-    const byteCharacters = atob(bStr);
-    const byteNumbers = new Array(byteCharacters.length);
-    for (let i = 0; i < byteCharacters.length; i++) {
-      byteNumbers[i] = byteCharacters.charCodeAt(i);
-    }
-    const byteArray = new Uint8Array(byteNumbers);
-    return new Blob([byteArray], {type: type});
   }
 
 }

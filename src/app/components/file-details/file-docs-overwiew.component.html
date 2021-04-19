@@ -17,6 +17,7 @@
             {{doc.name}}
           </a>
           <i
+            *ngIf="doc.name != ''"
             (click)="downloadFile(doc.base64Content, doc.type, doc.name)"
             class="pi pi-download clickable"
             pTooltip="Stiahnuť dokument"
