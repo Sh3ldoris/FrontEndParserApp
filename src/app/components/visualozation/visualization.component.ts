@@ -1,22 +1,26 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {VisualizationsFile} from "../../interface/visualizations-file";
-import { generateFileBlob } from "../../shared-service/functions";
+import { generateFileBlob, decodeBase } from "../../shared-service/functions";
 import * as html2pdf from 'html2pdf.js';
 
 @Component({
   selector: 'app-visualozation',
-  templateUrl: './visualozation.component.html',
-  styleUrls: ['./visualozation.component.scss']
+  templateUrl: './visualization.component.html',
+  styleUrls: ['./visualization.component.scss']
 })
-export class VisualozationComponent implements OnInit {
+export class VisualizationComponent implements OnInit {
   @Input() data: VisualizationsFile;
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  openHtml(event) {
-    event.preventDefault();
+  /**
+   * Opens html visualization
+   * @param event
+   */
+  openHtml(event): void {
+    event.preventDefault(); //Prevent to refresh page
     if (this.data.base64Html == null) {
       return;
     }
@@ -26,7 +30,11 @@ export class VisualozationComponent implements OnInit {
     URL.revokeObjectURL(url);
   }
 
-  openPdf(event) {
+  /**
+   * Opens pdf visualization
+   * @param event
+   */
+  openPdf(event): void {
     event.preventDefault();
     if (this.data.base64Html == null) {
       return;
@@ -39,13 +47,7 @@ export class VisualozationComponent implements OnInit {
       html2canvas:  { scale: 5 },
       jsPDF:        {unit: 'pt', format: 'a3', orientation: 'p'}
     };
-    html2pdf().from(this.decodeBase(this.data.base64Html)).set(option).save();
-  }
-
-  private decodeBase(str: string) {
-    return decodeURIComponent(atob(str).split('').map(function(c) {
-      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
+    html2pdf().from(decodeBase(this.data.base64Html)).set(option).save();
   }
 
 }

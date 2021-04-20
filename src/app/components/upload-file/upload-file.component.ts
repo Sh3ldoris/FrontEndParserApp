@@ -5,6 +5,7 @@ import {ContainerReport} from "../../interface/container-report";
 import {ContainerService} from "../../shared-service/container.service";
 import {FileUpload} from "primeng/fileupload";
 import {MessagesService} from "../../shared-service/messages.service";
+import { formatBytes } from "../../shared-service/functions";
 
 @Component({
   selector: 'app-upload-file',
@@ -25,11 +26,19 @@ export class UploadFileComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  chooseFile() {
+  /**
+   * When is clicked on the custom upload \
+   * btn there is selected hidden upload btn
+   */
+  chooseFile(): void {
     document.querySelector('input').click();
   }
 
-  addFile(event) {
+  /**
+   * Adds file to the selected files
+   * @param event
+   */
+  addFile(event): void {
     this.fileUpload.clear();
     this.uploadedFiles = [];
     for (let file of event.currentFiles) {
@@ -37,7 +46,10 @@ export class UploadFileComponent implements OnInit {
     }
   }
 
-  upload(event) {
+  /**
+   * Uploads file to the server
+   */
+  upload(): void {
 
     if (this.uploadedFiles[0] == null)
       return;
@@ -66,13 +78,17 @@ export class UploadFileComponent implements OnInit {
     };
   }
 
-  formatBytes(a,b=2){
-    if(0===a)return"0 Bytes";
-    const c=0>b?0:b,d=Math.floor(Math.log(a)/Math.log(1024));
-    return parseFloat((a/Math.pow(1024,d)).toFixed(c))+" "+["Bytes","kB","MB","GB","TB","PB","EB","ZB","YB"][d];
+
+  /**
+   * Returns bytes size in format
+   * @param a
+   * @param b
+   */
+  formatBytesWrapp(a,b=2): string{
+    return formatBytes(a, b);
   }
 
-  onRemoveMethod(event) {
+  onRemoveMethod(): void {
     this.isLoading = false;
     this.reportService.cleanReport();
     this.uploadedFiles = [];

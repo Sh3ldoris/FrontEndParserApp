@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
 import { AppViewComponent } from './components/app-view/app-view.component';
 import { FileDetailsComponent } from './components/file-details/file-details.component';
-import { FileDocsOverwiewComponent } from './components/file-details/file-docs-overwiew.component';
+import { FileDocsOverviewComponent } from './components/file-details/file-docs-overview.component';
 import {FileUploadModule} from 'primeng/fileupload';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { VerificationInfoComponent } from './components/verification-info/verification-info.component';
@@ -22,7 +22,7 @@ import {MessageModule} from 'primeng/message';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
 import { Loading2Component } from './components/loading2/loading2.component';
 import {DialogModule} from 'primeng/dialog';
-import { VisualozationComponent } from './components/visualozation/visualozation.component';
+import { VisualizationComponent } from './components/visualozation/visualization.component';
 
 @NgModule({
   declarations: [
@@ -30,14 +30,14 @@ import { VisualozationComponent } from './components/visualozation/visualozation
     HeaderComponent,
     AppViewComponent,
     FileDetailsComponent,
-    FileDocsOverwiewComponent,
+    FileDocsOverviewComponent,
     UploadFileComponent,
     VerificationInfoComponent,
     SignatureDetailComponent,
     TextAreaComponent,
     LoadingComponent,
     Loading2Component,
-    VisualozationComponent
+    VisualizationComponent
   ],
   imports: [
     BrowserModule,

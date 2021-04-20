@@ -14,15 +14,23 @@ export class ContainerService {
 
   constructor() { }
 
-  changeReport(cont: ContainerReport) {
+  /**
+   * Changes parsed info between components
+   * @param cont
+   */
+  changeReport(cont: ContainerReport): void {
       this.reportSource.next(cont);
   }
 
-  changeSelectedFile(n: File) {
+  /**
+   * Changes container info between components
+   * @param cont
+   */
+  changeSelectedFile(n: File): void {
     this.fileSource.next(n);
   }
 
-  cleanReport() {
+  cleanReport(): void {
     this.changeSelectedFile(null);
     this.changeReport(null);
   }

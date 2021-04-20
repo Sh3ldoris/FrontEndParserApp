@@ -11,11 +11,15 @@ export class MessagesService {
 
   constructor() { }
 
-  changeMessage(message: Message) {
+  /**
+   * Changes message to display between components
+   * @param message
+   */
+  changeMessage(message: Message): void {
     this.messageSource.next(message);
   }
 
-  clearMessages() {
+  clearMessages(): void {
     this.messageSource.next(null);
   }
 }

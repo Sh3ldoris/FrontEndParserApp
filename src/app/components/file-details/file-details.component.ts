@@ -4,6 +4,7 @@ import {ContainerReport} from "../../interface/container-report";
 import {OriginalDocument} from "../../interface/original-document";
 import {VisualizationsService} from "../../services/visualizations.service";
 import {VisualizationsFile} from "../../interface/visualizations-file";
+import { formatBytes } from "../../shared-service/functions";
 
 @Component({
   selector: 'app-file-details',
@@ -26,7 +27,7 @@ export class FileDetailsComponent implements OnInit {
     this.reportService.currentReport.subscribe(rep => {
       this.report = rep;
       if (this.report != null && this.report.originalDocuments.length)
-        this.checkVisualizations(this.report.originalDocuments);
+        this.checkForVisualizations(this.report.originalDocuments);
       if (this.report == null)
         this.visualizations = null;
     });
@@ -36,23 +37,26 @@ export class FileDetailsComponent implements OnInit {
     });
   }
 
-  formatBytes(a,b = 2){
-    if (0 === a)
-      return"0 Bytes";
-    const c=0>b?0:b,d=Math.floor(Math.log(a)/Math.log(1024));
-    return parseFloat((a/Math.pow(1024,d)).toFixed(c))+" "+["Bytes","kB","MB","GB","TB","PB","EB","ZB","YB"][d];
+  /**
+   * Returns formated bytes size
+   * @param a
+   * @param b
+   */
+  formatBytesWrapp(a, b = 2): string {
+    return formatBytes(a, b);
   }
 
-  showVisualozationDialog() {
+  showVisualizationDialog(): void {
     this.displayModal = true;
   }
 
-  private checkVisualizations(docs: OriginalDocument[]): void {
+  /**
+   * Searches for visualizations if doc is XML
+   * @param docs
+   * @private
+   */
+  private checkForVisualizations(docs: OriginalDocument[]): void {
     this.isLoadingVisualizations = true;
-
-    if (docs.length == 0) {
-      return;
-    }
 
     let xmlDocs = docs.filter(function (doc){
       return doc.type === 'text/xml';

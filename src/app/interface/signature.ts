@@ -1,5 +1,4 @@
 import {SignatureScopeItem} from "./signature-scope-item";
-import {CertInfo} from "./cert-info";
 
 export interface Signature {
   id: string;
@@ -9,7 +8,6 @@ export interface Signature {
   scopeItems: SignatureScopeItem[];
   errors: string[];
   warns: string[];
-  certInfo: CertInfo;
   certIssuerName: string;
   certSubjectName: string;
 }

@@ -22,9 +22,9 @@
 
   <div class="row">
     <p-fileUpload styleClass="upload-no-buttons" name="file-upl" #fileUpload
-                  (uploadHandler)="upload($event)"
-                  (onRemove)="onRemoveMethod($event)"
-                  (onClear)="onRemoveMethod($event)"
+                  (uploadHandler)="upload()"
+                  (onRemove)="onRemoveMethod()"
+                  (onClear)="onRemoveMethod()"
                   (onSelect)="addFile($event)"
                   customUpload="true"
                   accept="" >
@@ -43,7 +43,7 @@
               <p class="my-2 file-info text-center">{{file.name}}</p>
             </div>
             <div class="col-md-3 d-flex justify-content-center align-items-center">
-              <p class="file-info my-2"> {{formatBytes(file.size)}}</p>
+              <p class="file-info my-2"> {{formatBytesWrapp(file.size)}}</p>
             </div>
             <div class="col-0 col-md-1"></div>
             <div class="col-md-1 p-0 d-flex justify-content-end">

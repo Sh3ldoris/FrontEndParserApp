@@ -25,6 +25,10 @@ export class AppViewComponent implements OnInit {
     });
   }
 
+  /**
+   * Shows message to the user
+   * @param m - message
+   */
   showViaService(m: Message) {
     if (this.messagesCount >= 1) {
       this.messageService.clear();
@@ -33,6 +37,9 @@ export class AppViewComponent implements OnInit {
     this.messagesCount++;
   }
 
+  /**
+   * Clears message area if there is message displayed
+   */
   clearMessages() {
     if (this.messagesCount == 0)
       return;

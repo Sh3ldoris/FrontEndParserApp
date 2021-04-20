@@ -8,6 +8,4 @@ export interface ContainerReport {
   signaturesCount: number;
   validSignaturesCount: number;
   signatures: Signature[];
-  simpleReport: string;
-  detailedReport: string;
 }

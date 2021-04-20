@@ -6,10 +6,10 @@ import * as fileSaver from 'file-saver';
 
 @Component({
   selector: 'app-file-docs-overwiew',
-  templateUrl: './file-docs-overwiew.component.html',
-  styleUrls: ['./file-docs-overwiew.component.scss']
+  templateUrl: './file-docs-overview.component.html',
+  styleUrls: ['./file-docs-overview.component.scss']
 })
-export class FileDocsOverwiewComponent implements OnInit {
+export class FileDocsOverviewComponent implements OnInit {
 
   report: ContainerReport;
   private supportedFormats:string[] = ['text/plain','text/xml','application/pdf'];
@@ -23,26 +23,27 @@ export class FileDocsOverwiewComponent implements OnInit {
 
   }
 
-  public openDocument(bStr: string, type: string) {
+  /**
+   * Opens document in browser if it can be opened
+   * @param bStr - base 64
+   * @param type - doc mime type
+   */
+  public openDocument(bStr: string, type: string): void {
     if (!this.isSupportedFormat(type))
       return;
 
-    this.openFileInBrowser(bStr, type);
-  }
-
-  public downloadFile(bStr: string, type: string, name: string) {
-    fileSaver.saveAs(generateFileBlob(bStr, type), name);
-  }
-
-  public isSupportedFormat(format: string) {
-    return this.supportedFormats.includes(format);
-  }
-
-  private openFileInBrowser(bStr: string, type: string) {
     let blob = generateFileBlob(bStr, type);
     let url = URL.createObjectURL(blob);
     window.open(url, '_blank');
     URL.revokeObjectURL(url);
+  }
+
+  public downloadFile(bStr: string, type: string, name: string): void {
+    fileSaver.saveAs(generateFileBlob(bStr, type), name);
+  }
+
+  public isSupportedFormat(format: string): boolean {
+    return this.supportedFormats.includes(format);
   }
 
 }

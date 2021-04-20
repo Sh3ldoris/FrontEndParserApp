@@ -18,10 +18,13 @@ export class SignatureDetailComponent implements OnInit {
   ngOnInit(): void {
     this.signDate = new Date(this.signature.signingDate);
     const month = this.signDate.getMonth() + 1;
-    let minutes = + this.signDate.getMinutes() < 10 ? '0' + this.signDate.getMinutes() : this.signDate.getMinutes();
-    let hours = + this.signDate.getHours() < 10 ? '0' + this.signDate.getHours() : this.signDate.getHours();
+
+    let minutes = this.signDate.getMinutes() < 10 ? '0' + this.signDate.getMinutes() : this.signDate.getMinutes();
+
+    let hours =  this.signDate.getHours() < 10 ? '0' + this.signDate.getHours() : this.signDate.getHours();
+    //Create string to display
     this.signDateStr = this.signDate.getDate() + '.' + month + '.' + this.signDate.getFullYear()
-      + ' - ' + this.signDate.getHours() + ':' + minutes + ':' + hours;
+                      + ' - ' + this.signDate.getHours() + ':' + minutes + ':' + hours;
   }
 
 }
