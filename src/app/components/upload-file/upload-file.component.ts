@@ -20,7 +20,7 @@ export class UploadFileComponent implements OnInit {
   uploadedFiles: any[] = [];
   isLoading: boolean = false;
 
-  private subscriptions = new Subscription();
+  private subscriptions: Subscription[] = [];
 
   constructor(private uploadService: FileUploadService,
               private reportService: ContainerService,
@@ -42,7 +42,9 @@ export class UploadFileComponent implements OnInit {
    * @param event
    */
   addFile(event): void {
-    this.subscriptions.unsubscribe();
+    this.subscriptions.forEach(value => {
+      value.unsubscribe();
+    });
     this.fileUpload.clear();
     this.uploadedFiles = [];
     for (let file of event.currentFiles) {
@@ -65,7 +67,7 @@ export class UploadFileComponent implements OnInit {
 
     reader.onload = () => {
       const base = reader.result as string;
-      this.subscriptions.add(this.uploadService.upload(new FileUploadRequest(base.split(',')[1],file.type ,file.name))
+      this.subscriptions.push(this.uploadService.upload(new FileUploadRequest(base.split(',')[1],file.type ,file.name))
         .subscribe(
           (data : ContainerReport) => {
             this.reportService.changeReport(data);
@@ -78,8 +80,7 @@ export class UploadFileComponent implements OnInit {
             this.messageShowService.changeMessage(
               {severity: 'error', key: 'error', summary:'Chyba', detail: message}
             );
-          })
-      );
+          }));
     };
   }
 
@@ -94,7 +95,9 @@ export class UploadFileComponent implements OnInit {
   }
 
   onRemoveMethod(): void {
-    this.subscriptions.unsubscribe();
+    this.subscriptions.forEach(value => {
+      value.unsubscribe();
+    });
     this.isLoading = false;
     this.reportService.cleanReport();
     this.uploadedFiles = [];
